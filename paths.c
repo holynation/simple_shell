@@ -78,3 +78,18 @@ char *combine_path(const char sep, const char *path1, const char *path2)
 	return (path_join);
 }
 
+/**
+ * file_exist - This is to check if a path truly exists
+ * @path: the pathname to look for
+ * Return: return 1 for success, 0 for otherwise
+ */
+int file_exist(const char *path)
+{
+	struct stat buffer;
+
+	if (stat(path, &buffer) == 0)
+	{
+		return (1);
+	}
+	return(0);
+}
