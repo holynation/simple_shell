@@ -35,7 +35,6 @@ char *ignore_space(char *str)
 char *get_user_command(void)
 {
 	char *buffer_ptr;
-	size_t size = 0;
 	ssize_t i = 0;
 	int j = 0;
 
@@ -64,7 +63,7 @@ char *get_stdin(void)
 	size_t size = 0;
 	ssize_t i = 0;
 	char *buff;
-	int j = 0, k = 0, l = 0, loop_count = 0;
+	int j = 0, k = 0, loop_count = 0;
 
 	buff = malloc(sizeof(char *) * 1024);
 	if (buff == NULL)

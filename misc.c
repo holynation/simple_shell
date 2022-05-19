@@ -56,6 +56,7 @@ int c_atoi(char *s)
 int __exit(char **str, int num, char **command)
 {
 	int e_value = 0;
+	(void)num; /* this should be removed once others are implemented */
 
 	if (str[1] != NULL) /* if no value given after exit, return 0 */
 		e_value = c_atoi(str[1]);

@@ -19,7 +19,7 @@ void c_exit(char **str)
 int _execve(char **s, int num)
 {
 	char *holder;
-	int status = 0, t = 0;
+	int status = 0;
 	pid_t pid;
 
 	holder = locate_cmd_in_path(s[0]);

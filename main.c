@@ -21,6 +21,8 @@ int main(int ac, char **av)
 	char *cmd_str = NULL, *n_command = NULL, *dem = " ";
 	char **token = NULL;
 	int exit_stat = 0, command_line_num = 0;
+	(void)ac;
+	(void)av;
 	/* on repeat till user exits the shell */
 	do {
 		command_line_num++;

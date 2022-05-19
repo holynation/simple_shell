@@ -50,7 +50,7 @@ char *_getenv(const char *name, const int num_ex)
 			j++;
 
 		if (name[j] == '\0' && env_val[j] == '=')
-			return ((num_ex == 0) ? _strdup(en_val) : ex_strdup(env_val, num_ex));
+			return ((num_ex == 0) ? _strdup(env_val) : ex_strdup(env_val, num_ex));
 
 		i++;
 	}
