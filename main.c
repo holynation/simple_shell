@@ -7,7 +7,8 @@
 void ctrl_C(int n)
 {
 	(void)n;
-	write(STDOUT_FILENO, "\n#cisfun$", 3);
+	write(STDOUT_FILENO, "\n", 1);
+	exit(0);
 }
 
 /**
@@ -21,18 +22,19 @@ int main(int ac, char **av)
 	char *cmd_str = NULL, *n_command = NULL, *dem = " ";
 	char **token = NULL;
 	int exit_stat = 0, command_line_num = 0;
+	char *shell_name = "#cisfun$ ";
 	(void)ac;
-	(void)av;
 	/* on repeat till user exits the shell */
 	do {
 		command_line_num++;
 		if (isatty(STDIN_FILENO)) /* reprompt if in interactive shell */
-			write(STDOUT_FILENO, "#cisfun$ ", 9);
+			write(STDOUT_FILENO, shell_name, 10);
 		else
 			non_interactive();
 		signal(SIGINT, ctrl_C); /* handle signal */
 		cmd_str = NULL; /* reset vars every time loop runs */
 		cmd_str = get_user_command(); /* get command from the user */
+
 		n_command = cmd_str;
 		if (cmd_str[0] == '\0') /* reprompt if user hit enter only */
 		{
@@ -44,10 +46,10 @@ int main(int ac, char **av)
 		token = _str_tok(cmd_str, dem);
 		if (n_command != NULL)
 			free(n_command);
-		/*exit_stat = built_in(token, command_line_num, NULL);*/
+		exit_stat = built_in(token, command_line_num, NULL, av);
 		if (exit_stat)
 			continue;
-		exit_stat = _execve(token, command_line_num);
+		exit_stat = _execve(token, command_line_num, av);
 	} while (1);
 	free(cmd_str);
 	return (exit_stat);

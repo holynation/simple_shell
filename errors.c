@@ -4,29 +4,29 @@
  * not_found_err - write error ("sh: 1: qwerty: not found")
  * @str: user's typed command
  * @c_n: nth user's typed command
+ * @av: this is the program args
  */
-void not_found_err(char *str, int c_n)
+void not_found_err(char *str, int c_n, char **av)
 {
 	int count = 0;
-	char *shell, *num;
+	(void)c_n;
+	(void)str;
+	count = _strlen(*av);
+	write(STDOUT_FILENO, *av, count);
+	write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, "No such file or directory\n", 26);
+}
 
-	shell = _getenv("_", 2); /* get shell name to write */
-	while (shell[count] != '\0')
-		count++;
-	write(STDOUT_FILENO, shell, count);
-	free(shell);
+/**
+ * illegal_number - write error ("hsh: 3: exit: Illegal number abc (or -1)")
+ * @av: this is the program args
+ */
+void unknown_number(char **av)
+{
+	int count = 0;
+
+	count = _strlen(*av);
+	write(STDOUT_FILENO, *av, count);
 	write(STDOUT_FILENO, ": ", 2);
-	num = int_to_string(c_n); /* convert cmd line num to string to write */
-	count = 0;
-	while (num[count] != '\0')
-		count++;
-	write(STDOUT_FILENO, num, count);
-	free(num);
-	write(STDOUT_FILENO, ": ", 2);
-	count = 0;
-	while (str[count] != '\0')
-		count++;
-	write(STDOUT_FILENO, str, count);
-	write(STDOUT_FILENO, ": ", 2);
-	write(STDOUT_FILENO, "not found\n", 10);
+	write(STDOUT_FILENO, "exit: Illegal number: ", 22);
 }

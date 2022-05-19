@@ -56,3 +56,25 @@ char *_getenv(const char *name, const int num_ex)
 	}
 	return (NULL);
 }
+
+/**
+ * _printenv - This is to print the environment variable
+ * Return: void
+ */
+void _printenv(void)
+{
+	size_t i = 0;
+	char *s = NULL;
+	char line_break = '\n';
+	size_t j = 0;
+
+	while (environ[i])
+	{
+		s = environ[i++];
+		j = 0;
+		while (s[j++])
+		;
+		write(STDOUT_FILENO, s, j);
+		write(STDOUT_FILENO, &line_break, 1);
+	}
+}

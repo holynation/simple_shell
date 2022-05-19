@@ -41,13 +41,13 @@ void non_interactive(void)
 		command_line_num++;
 		token = NULL; /* tokenize each command in array of commands */
 		token = _str_tok(n_line[n], dem);
-		exit_stat = built_in(token, command_line_num, n_line);
+		exit_stat = built_in(token, command_line_num, n_line, NULL);
 		if (exit_stat)
 		{
 			n++;
 			continue;
 		}
-		exit_stat = _execve(token, command_line_num);
+		exit_stat = _execve(token, command_line_num,NULL);
 		n++;
 	}
 	free_double_ptr(n_line);

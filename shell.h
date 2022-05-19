@@ -31,11 +31,14 @@ char *locate_cmd_in_path(const char *name);
 char *combine_path(const char sep, const char *path1, const char *path2);
 int file_exist(const char *path);
 char *int_to_string(int number);
-void not_found_err(char *str, int c_n);
-int built_in(char **token, int num, char **command);
-int __exit(char **str, int num, char **command);
+void not_found_err(char *str, int c_n, char **av);
+int built_in(char **token, int num, char **command, char **av);
+int __exit(char **str, int num, char **command, char **av);
 int _strcmp(char *s1, char *s2);
-int _execve(char **s, int num);
+int _execve(char **s, int num, char **av);
+void _printenv(void);
+void unknown_number(char **av);
+
 
 void non_interactive(void);
 

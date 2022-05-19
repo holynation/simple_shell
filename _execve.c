@@ -14,9 +14,10 @@ void c_exit(char **str)
  * _execve - execute command user typed into shell
  * @s: command user typed
  * @num: nth user command; to be used in error message
+ * @av: this is the program args
  * Return: 0 on success
  */
-int _execve(char **s, int num)
+int _execve(char **s, int num, char **av)
 {
 	char *holder;
 	int status = 0;
@@ -26,7 +27,7 @@ int _execve(char **s, int num)
 	/* if not an executable, free */
 	if (access(holder, X_OK) != 0)
 	{
-		not_found_err(s[0], num);
+		not_found_err(s[0], num, av);
 		free_double_ptr(s);
 		free(holder);
 		return (127);
@@ -38,7 +39,7 @@ int _execve(char **s, int num)
 		{
 			if (execve(holder, s, NULL) == -1)
 			{
-				not_found_err(s[0], num); /* special err msg */
+				not_found_err(s[0], num, av); /* special err msg */
 				c_exit(s);
 			}
 		}
