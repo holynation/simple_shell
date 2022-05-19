@@ -18,7 +18,7 @@ void not_found_err(char *str, int c_n, char **av)
 }
 
 /**
- * illegal_number - write error ("hsh: 3: exit: Illegal number abc (or -1)")
+ * unknown_number - write error ("hsh: 3: exit: Illegal number abc (or -1)")
  * @av: this is the program args
  */
 void unknown_number(char **av)

@@ -47,7 +47,7 @@ void non_interactive(void)
 			n++;
 			continue;
 		}
-		exit_stat = _execve(token, command_line_num,NULL);
+		exit_stat = _execve(token, command_line_num, NULL);
 		n++;
 	}
 	free_double_ptr(n_line);
