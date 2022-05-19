@@ -18,7 +18,7 @@ char *ex_strdup(char *str, int cs)
 		len++;
 	len++;
 	/* allocate memory but exclude environmental variable title (PATH) */
-	duplicate_str = malloc(sizeof(char) * (len -cs));
+	duplicate_str = malloc(sizeof(char) * (len - cs));
 	if (duplicate_str == NULL)
 		return (NULL);
 

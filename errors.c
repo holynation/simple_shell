@@ -10,7 +10,7 @@ void not_found_err(char *str, int c_n)
 	int count = 0;
 	char *shell, *num;
 
-	shell = _getenv("_",2); /* get shell name to write */
+	shell = _getenv("_", 2); /* get shell name to write */
 	while (shell[count] != '\0')
 		count++;
 	write(STDOUT_FILENO, shell, count);

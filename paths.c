@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * locate_path - this is to find a path in the environ variable
+ * locate_cmd_in_path - this is to find a path in the environ variable
  * @name: name of the exec to find in the environment variable
  * Return: return the absolute path of the exec func
  */
 char *locate_cmd_in_path(const char *name)
 {
-	char *path = _getenv("PATH",0);
+	char *path = _getenv("PATH", 0);
 	char *dir_path = NULL;
 	char *file_path = NULL;
 
@@ -81,7 +81,7 @@ char *combine_path(const char sep, const char *path1, const char *path2)
 /**
  * file_exist - This is to check if a path truly exists
  * @path: the pathname to look for
- * Return: return 1 for success, 0 for otherwise 
+ * Return: return 1 for success, 0 for otherwise
  */
 int file_exist(const char *path)
 {

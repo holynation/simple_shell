@@ -4,7 +4,6 @@
  * ctrl_D - exits program if Ctrl-D was pressed
  * @i: characters read via getline
  * @command: user's typed in command
- * @env: environmental variable linked list
  */
 void ctrl_D(int i, char *command)
 {
@@ -67,8 +66,8 @@ char *get_stdin(void)
 	char *buff;
 	int j = 0, k = 0, l = 0, loop_count = 0;
 
-	buff = malloc(sizeof( char *) * 1024);
-	if(buff == NULL)
+	buff = malloc(sizeof(char *) * 1024);
+	if (buff == NULL)
 	{
 		free(buff);
 		return (NULL);
@@ -77,17 +76,16 @@ char *get_stdin(void)
 	while ((i = getline(&buffer, &size, stdin)) != -1)
 	{
 		if (i == -1)
-		{
 			return (NULL);
-		}
 		loop_count++;
-		if (buff){
+		if (buff)
+		{
 			j = _strlen(buffer);
 			buffer[j - 1] = ' ';
 			if (!k)
 			{
 				/* this would be the first line */
-				_strcpy(buff,buffer);
+				_strcpy(buff, buffer);
 			}
 			else
 			{

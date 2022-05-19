@@ -63,7 +63,7 @@ char *_strcat(char *dest, char *src)
 
 /**
  * _strdup - this is to duplicate the string
- * @str - the string to be duplicated
+ * @str: the string to be duplicated
  * Return: the new duplicated string
  */
 char *_strdup(const char *str)

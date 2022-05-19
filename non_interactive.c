@@ -17,12 +17,13 @@ char *c_ignore(char *str)
  * non_interactive - handles when user pipes commands into shell via "|"
  * (e.g. echo "ls/nls -al/n" | ./a.out)
  */
-void non_interactive()
+void non_interactive(void)
 {
 	size_t i = 0, n = 0;
 	int command_line_num = 0, exit_stat = 0;
-	char *command = NULL, *n_command = NULL, *dem = " ", **n_line, **token;
-	
+	char *command = NULL, *n_command = NULL, *dem = " ";
+	char **n_line, **token;
+
 	i = _getline(&command);
 	if (i == 0)
 	{

@@ -37,6 +37,6 @@ int __exit(char **str, int num, char **command);
 int _strcmp(char *s1, char *s2);
 int _execve(char **s, int num);
 
-void non_interactive();
+void non_interactive(void);
 
 #endif
