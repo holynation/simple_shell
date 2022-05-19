@@ -40,7 +40,9 @@ char *get_user_command(void)
 
 	i = _getline(&buffer_ptr);
 	if (i == -1)
+	{
 		return (NULL);
+	}
 	ctrl_D(i, buffer_ptr); /* exits shell if ctrl-D */
 	buffer_ptr = ignore_space(buffer_ptr);
 	j = 0;
