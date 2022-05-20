@@ -25,9 +25,9 @@ int _execve(char **s, int num, char **av)
 
 	holder = locate_cmd_in_path(s[0]);
 	/* if not an executable, free */
-	if (access(holder, X_OK) != 0)
+	if (holder == NULL)
 	{
-		not_found_err(s[0], num, av);
+		not_found_err(num, av);
 		free_double_ptr(s);
 		free(holder);
 		return (127);
@@ -39,7 +39,7 @@ int _execve(char **s, int num, char **av)
 		{
 			if (execve(holder, s, NULL) == -1)
 			{
-				not_found_err(s[0], num, av); /* special err msg */
+				not_found_err(num, av); /* special err msg */
 				c_exit(s);
 			}
 		}

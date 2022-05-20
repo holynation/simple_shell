@@ -21,7 +21,7 @@ void non_interactive(void)
 {
 	size_t i = 0, n = 0;
 	int command_line_num = 0, exit_stat = 0;
-	char *command = NULL, *n_command = NULL, *dem = " ";
+	char *command = NULL, *dem = " ";
 	char **n_line, **token;
 
 	i = _getline(&command);
@@ -30,17 +30,21 @@ void non_interactive(void)
 		free(command);
 		exit(0);
 	}
-	n_command = command;
 	command = c_ignore(command);
-	n_line = _str_tok(command, "\n"); /* tokenize each command string */
-	if (n_command != NULL)
-		free(n_command);
+	n_line = _strtok(command, "\n"); /* tokenize each command string */
+	if (n_line == NULL)
+	{
+		free_double_ptr(n_line);
+		exit(exit_stat);
+	}
 	n = 0;
 	while (n_line[n] != NULL)
 	{
 		command_line_num++;
 		token = NULL; /* tokenize each command in array of commands */
-		token = _str_tok(n_line[n], dem);
+		token = _strtok(n_line[n], dem);
+		if (token == NULL)
+			free(token);
 		exit_stat = built_in(token, command_line_num, n_line, NULL);
 		if (exit_stat)
 		{

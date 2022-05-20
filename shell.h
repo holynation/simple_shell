@@ -18,20 +18,21 @@
 extern char **environ;
 
 char *get_user_command(void);
-char **_str_tok(char *str, char *delm);
+char **_strtok(char *str, char *delm);
 char *get_stdin(void);
 int _strlen(char *s);
+int t_strlen(char *str, int pos, char delm);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 size_t _getline(char **str);
 void free_double_ptr(char **str);
 char *_getenv(const char *name, const int num_ex);
 char *_strdup(const char *str);
-char *locate_cmd_in_path(const char *name);
+char *locate_cmd_in_path(char *str);
 char *combine_path(const char sep, const char *path1, const char *path2);
 int file_exist(const char *path);
 char *int_to_string(int number);
-void not_found_err(char *str, int c_n, char **av);
+void not_found_err(int c_n, char **av);
 int built_in(char **token, int num, char **command, char **av);
 int __exit(char **str, int num, char **command, char **av);
 int _strcmp(char *s1, char *s2);

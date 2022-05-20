@@ -68,28 +68,27 @@ char *_strcat(char *dest, char *src)
  */
 char *_strdup(const char *str)
 {
-	size_t i = 0;
-	size_t len = 0;
-	char *new_str = NULL;
+	char *copy_str;
+	int i = 0, len = 0;
 
 	if (str == NULL) /* validate str input */
 		return (NULL);
 
-	while (str[i++])
-		;
-	len += i;
-	len++; /* add null terminator to length */
-
-	new_str = malloc(sizeof(char *) * (len + 1));
-	if (new_str == NULL)
+	while (*(str + i)) /* calc the string len*/
+	{
+		len++, i++;
+	}
+	len++; /* account for null terminator to length */
+	copy_str = malloc(sizeof(char) * len); /* allocate dynamic memory */
+	if (copy_str == NULL) /* validate memory */
 		return (NULL);
 
 	i = 0;
-	while (i <= len)
+	while (i < len)
 	{
-		new_str[i] = str[i];
+		*(copy_str + i) = *(str + i);
 		i++;
 	}
 
-	return (new_str);
+	return (copy_str);
 }
